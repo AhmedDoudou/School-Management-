@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="page-wrapper">
+  <div class="alert alert-danger d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+    <div>
+        Are you sure you want to delete "{{ object }}"?
+        <form method="post">
+              {% csrf_token %}
+              {{ form }}
+          <input type="submit" value="Confirm">
+        </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+ 
+{% endblock%}                
+  

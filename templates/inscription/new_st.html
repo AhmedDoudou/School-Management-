@@ -1,0 +1,73 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+   {% load static %}
+   {% load bootstrap5 %}
+    {% include 'includes/header.html' %}
+    {% include 'includes/sidebar.html' %}
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+           <div class="page-header">
+              <div class="row">
+                 <div class="col-sm-12">
+                    <h3 class="page-title">New Inscription</h3>
+                 </div>
+              </div>
+           </div>
+            <div class="row ">
+                <div class="col-md-10 d-flex ">
+                   <div class="card flex-fill col-md-8 modal-content">
+                      <div class="card-header">
+                         <h5 class="card-title text-center modal-header">New Inscription</h5>
+                      </div>
+                      <div class="card-body modal-body">
+                         <div class="table-responsive">
+                            <form class="mt-8 space-y-6"  method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row ">
+                                        <div class=" form-group col-sm-6 mt-4">
+                                            <a href="{% url 'inscription:newST' %}" style="margin-top:10px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#student">Add Student</a>
+                                         </div>
+                                    </div>
+                            </form>
+                         </div>
+                      </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+   </div>
+  
+ </div>
+<!--  STUDENT form modal -->
+   <div class="modal fade student" id="student" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+         <div class="modal-content">
+            <div class="row">
+               <div class="col-lg-12">
+                  <div class="card">
+                     <div class="card-header">
+                     <h5 class="card-title">Add Student</h5>
+                     </div>
+                     <div class="card-body">
+                        <form method="post" action="{% url 'inscription:new' %}" enctype="multipart/form-data">
+                           {% csrf_token%}
+                           {{student_form|crispy}}
+                        <div class="modal-footer">
+                              <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                              <button type="submit" class="btn btn-primary" name="add_student">Add Student</button>
+                        </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+ <!-- PARENT Modal Form -->
+    
+   
+  {% include 'includes/footer.html' %}   
+{% endblock %}

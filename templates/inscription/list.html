@@ -1,0 +1,74 @@
+{% extends 'base/base.html' %}
+{% block content %}
+   {% load static %}
+   {% load bootstrap5 %}
+    {% include 'includes/header.html' %}
+    {% include 'includes/sidebar.html' %}
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+           <div class="page-header">
+              <div class="row align-items-center">
+                 <div class="col">
+                    <h3 class="page-title">Inscription</h3>
+                    <ul class="breadcrumb">
+                       <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                       <li class="breadcrumb-item active">Inscription</li>
+                    </ul>
+                 </div>
+                 <div class="col-auto text-right float-right ml-auto">
+                    <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-pdf"></i> PDF File</a>
+                    <a href="{% url 'inscription:create'%}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                 </div>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col-sm-12">
+                 <div class="card card-table">
+                    <div class="card-body">
+                       <div class="table-responsive">
+                          <table class="table table-hover table-center mb-0 datatable">
+                             <thead>
+                                <tr>
+                                   <th>ID</th>
+                                   <th>Student</th>
+                                   <th>Parent</th>
+                                   <th>Program</th>
+                                   <th>Subscription</th>
+                                   <th class="text-right">Action</th>
+                                </tr>
+                             </thead>
+                             <tbody>
+                                {% for inscription in object_list %}
+                                <tr>
+                                   <td>IN{{inscription.id}}</td>
+                                   <td>
+                                      <h2 class="table-avatar">
+                                         <a href="{% url 'inscription:detail' inscription.id %}" class="avatar avatar-sm mr-2">{{inscription.student}}</a>
+                                         
+                                      </h2>
+                                   </td>
+                                   <td>{{inscription.parent}}</td>
+                                   <td>{{inscription.program}}</td>
+                                   <td>{{inscription.membership}}</td>
+                                   <td class="text-right">
+                                      <div class="actions">
+                                         <a href="{% url 'inscription:update' inscription.id %}" class="btn btn-sm bg-success-light mr-2">
+                                         <i class="fas fa-pen"></i>
+                                         </a>
+                                         <a href="{% url 'inscription:delete' inscription.id %}" class="btn btn-sm bg-danger-light">
+                                         <i class="fas fa-trash"></i>
+                                         </a>
+                                      </div>
+                                   </td>
+                                </tr>
+                                    {% endfor %} 
+                            </tbody>
+                        </table>
+                        </div>
+                        {% load widget_tweaks %}
+
+
+                    </div>
+
+{% include 'includes/footer.html' %}   
+{% endblock%}                

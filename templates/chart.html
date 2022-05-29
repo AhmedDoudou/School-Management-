@@ -1,0 +1,83 @@
+{% extends 'base/base.html' %} 
+   
+{% block content %}
+{% load static %}
+   {% load bootstrap5 %}
+    {% include 'includes/header.html' %}
+    {% include 'includes/sidebar.html' %}
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+           <div class="page-header">
+              <div class="row align-items-center">
+                 <div class="col">
+                    <h3 class="page-title">New Inscription</h3>
+                    <ul class="breadcrumb">
+                       <li class="breadcrumb-item"><a href="students.html">Students</a></li>
+                       <li class="breadcrumb-item active">New Inscription</li>
+                    </ul>
+                 </div>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col-sm-12">
+                 <div class="card">
+                    <div class="card-body">
+                        <h1>Student Data</h1>
+                        <div id="myChart"></div>
+                        <!-- scripts  -->
+                        <script>
+                            let myConfig = {
+                              type: 'line',
+                              title: {
+                                text: 'Data Student',
+                                fontSize: 24,
+                              },
+                              legend: {
+                                draggable: true,
+                              },
+                              scaleX: {
+                                // Set scale label
+                                label: { text: 'Days' },
+                                // Convert text on scale indices
+                                labels: [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ]
+                              },
+                              scaleY: {
+                                // Scale label with unicode character
+                                label: { text: 'Students' },
+                                labels: [ '1', '2', '3', '4', '5', '6', '7' ]
+                              },
+                              plot: {
+                                // Animation docs here:
+                                // https://www.zingchart.com/docs/tutorials/styling/animation#effect
+                                animation: {
+                                  effect: 'ANIMATION_EXPAND_BOTTOM',
+                                  method: 'ANIMATION_STRONG_EASE_OUT',
+                                  sequence: 'ANIMATION_BY_NODE',
+                                  speed: 275,
+                                }
+                              },
+                              "series": [{
+                                    "values": [3,2,10],
+                                
+                            }]
+                            };
+                        
+                            // Render Method[3]
+                            zingchart.render({
+                              id: 'myChart',
+                              data: myConfig,
+                            });
+                          </script>
+
+                    </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+</div>
+</div>
+
+</div>
+{% endblock content %}

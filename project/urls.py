@@ -20,7 +20,13 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('core.urls', namespace="core")),
+    path('',include('core.urls')),
+    path('student/',include('studentManagement.urls', namespace="student")),
+    path('program/',include('programs.urls', namespace="program")),
+    path('parent/',include('parents.urls', namespace="parent")),
+    path('inscription/',include('inscriptions.urls', namespace="inscription")),
+    path('payment/',include('payments.urls', namespace="payment")),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

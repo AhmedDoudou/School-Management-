@@ -37,8 +37,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # apps
+    'studentManagement',
+    'programs',
+    'parents',
+    'inscriptions',
     'core',
+    'payments',
+
+
+    'bootstrap_modal_forms',
+    'widget_tweaks',
+    'bootstrap5',
+    'phone_field',
+    'crispy_forms',
+
+
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -126,10 +142,14 @@ STATICFILES_DIRS = [BASE_DIR / "static"]  # new
 STATIC_ROOT = STATIC_ROOT = BASE_DIR / "staticfiles"  # new
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"  # new
 
-STATIC_ROO = "static_root"
+STATIC_ROOT = "static_root"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
+
+LOGIN_REDIRECT_URL = "dashboard/"
+LOGIN_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

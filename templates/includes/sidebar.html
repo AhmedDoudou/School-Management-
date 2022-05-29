@@ -1,0 +1,56 @@
+
+{% load static %}
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+       <div id="sidebar-menu" class="sidebar-menu">
+          <ul>
+             <li class="menu-title">
+                <span>Main Menu</span>
+             </li>
+             <li class="submenu active">
+                <a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
+                <ul>
+                   <li><a href="{% url 'dashboard' %}" class="active">Admin Dashboard</a></li>
+                </ul>
+             </li>
+             <li class="submenu">
+                <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
+                <ul>
+                   <li><a href="{% url 'student:list'%}">Student List</a></li>
+                   <li><a href="{% url 'student:create'%}">Student Add</a></li>
+                </ul>
+             </li>
+             <li class="submenu">
+               <a href="#"><i class="fas fa-file"></i> <span> Inscription</span> <span class="menu-arrow"></span></a>
+               <ul>
+                  <li><a href="{% url 'inscription:list'%}">Inscription List</a></li>
+                  <li><a href="{% url 'inscription:create'%}">Inscription Add</a></li>
+               </ul>
+            </li>
+             <li class="submenu">
+                <a href="#"><i class="fas fa-book-reader"></i> <span> Programs</span> <span class="menu-arrow"></span></a>
+                <ul>
+                   <li><a href="{% url 'program:list' %}">Program List</a></li>
+                   <li><a href="{% url 'program:create' %}">Program Add</a></li>
+                </ul>
+             </li>
+             <li class="menu-title">
+                <span>Management</span>
+             </li>
+             <li class="submenu">
+                <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> MemberShip</span> <span class="menu-arrow"></span></a>
+                <ul>
+                   
+                   <li><a href="{% url 'dashboard' %}">Salary</a></li>
+                </ul>
+             </li>
+             
+             
+             <li>
+                <a href="blank-page.html"><i class="fas fa-file"></i> <span>Blank Page</span></a>
+             </li>
+             
+          </ul>
+       </div>
+    </div>
+ </div>

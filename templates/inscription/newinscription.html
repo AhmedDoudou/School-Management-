@@ -1,0 +1,244 @@
+{% extends 'base/base.html' %}
+{% block content %}
+   {% load static %}
+   {% load bootstrap5 %}
+    {% include 'includes/header.html' %}
+    {% include 'includes/sidebar.html' %}
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+           <div class="page-header">
+              <div class="row align-items-center">
+                 <div class="col">
+                    <h3 class="page-title">New Inscription</h3>
+                    <ul class="breadcrumb">
+                       <li class="breadcrumb-item"><a href="students.html">Students</a></li>
+                       <li class="breadcrumb-item active">New Inscription</li>
+                    </ul>
+                 </div>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col-sm-12">
+                 <div class="card">
+                    <div class="card-body">
+                       <form role="form" class="row g-3" method='POST' enctype="multipart/form-data">
+                        {% csrf_token %}
+                          <div class="row">
+                             <div class="col-12">
+                                <h5 class="form-title" style="color: rgb(16, 162, 246);"><span>Student Information</span></h5>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>First Name</label>
+                                   <input type="text" class="form-control" name="first_name">
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Last Name</label>
+                                   <input type="text" class="form-control" name="last_name">
+                                </div>
+                             </div>
+                             
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Student Gender</label>
+                                   <select class="form-control" name="gender">
+                                      <option value="Girl">Girl</option>
+                                      <option value="Boy">Boy</option>
+                                   </select>
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Grade</label>
+                                   <select class="form-control" name="grade">
+                                      <option value="Tiny Makers">Tiny Makers</option>
+                                      <option value="Mini Makers">Mini Makers</option>
+                                      <option value="Makers Champions">Makers Champions</option>
+                                   </select>
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Date of Birth</label>
+                                   <div>
+                                      <input type="text" class="form-control" name="birthday" placeholder="2011-01-01">
+                                   </div>
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Address</label>
+                                   <input type="text" class="form-control" name="address">
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Email</label>
+                                   <input type="email" class="form-control" name="email">
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Mobile Number</label>
+                                   <input type="phone" class="form-control" name="phone">
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Student Profile</label>
+                                   <input type="file" class="form-control" name="picture">
+                                </div>
+                             </div>
+                             <div class="col-12">
+                                <h5 class="form-title" style="color: rgb(16, 162, 246);"><span>Parent Information</span></h5>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Parent Name</label>
+                                   <input type="text" class="form-control" name="fullname">
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Parent Gender</label>
+                                   <select class="form-control" name="parent_gender">
+                                      <option value="1">Select Gender</option>
+                                      <option value="Mother">Mother</option>
+                                      <option value="Father">Father</option>
+                                   </select>
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Phone Number</label>
+                                   <input type="phone" class="form-control" name="phone">
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Address</label>
+                                   <input type="text" class="form-control" name="address">
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Description</label>
+                                   <textarea class="form-control" name="description"></textarea>
+                                </div>
+                             </div>
+                             <div class="col-12">
+                                <h5 class="form-title" style="color: rgb(16, 162, 246);"><span>Program & MemeberShip</span></h5>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>Program</label>
+                                   <select class="form-control" name="program_id">
+                                    <option value="1">Select program</option>
+                                    {% for prog in programs %}
+                                    <option value="{{prog.id}}">{{prog.label}}</option>
+                                    {% endfor %}
+                                 </select>
+                                </div>
+                             </div>
+                             <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                   <label>MemeberShip</label>
+                                   <select class="form-control" name="membership_id">
+                                    <option value="1">Select MemeberShip</option>
+                                    {% for membership in memberships %}
+                                    <option value="{{memebership.id}}">{{membership.label}}</option>
+                                    {% endfor %}
+                                 </select>
+                                </div>
+                             </div>
+                                <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                             </div>
+                          </div>
+                       </form>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+</div>
+</div>
+
+</div>
+{% include 'includes/footer.html' %}   
+{% endblock %}
+
+
+<!-- <form role="form" class="row g-3" method='POST' enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h4 class="text-capitalize"> Parent </h4>
+                                <div class="banner">
+                                  <h1>New Member Registration</h1>
+                                </div>
+                                <div class="colums">
+                                  <div class="item">
+                                    <label for="fname"> First Name<span>*</span></label>
+                                    <input id="fname" type="text" name="fname" required/>
+                                  </div>
+                                  <div class="item">
+                                    <label for="lname"> Last Name<span>*</span></label>
+                                    <input id="lname" type="text" name="lname" required/>
+                                  </div>
+                                  <div class="item">
+                                    <label for="address1">Address 1<span>*</span></label>
+                                    <input id="address1" type="text"   name="address1" required/>
+                                  </div>
+                                  <div class="item">
+                                    <label for="address2">Address 2<span>*</span></label>
+                                    <input id="address2" type="text"   name="address2" required/>
+                                  </div>
+                                  <div class="item">
+                                    <label for="state">State<span>*</span></label>
+                                    <input id="state" type="text"   name="state" required/>
+                                  </div>
+                                  <div class="item">
+                                    <label for="zip">Zip/Postal Code<span>*</span></label>
+                                    <input id="zip" type="text" name="zip" required/>
+                                  </div>
+                                  <div class="item">
+                                    <label for="city">City<span>*</span></label>
+                                    <input id="city" type="text"   name="city" required/>
+                                  </div>
+                                  <div class="item">
+                                    <label for="eaddress">Email Address<span>*</span></label>
+                                    <input id="eaddress" type="text"   name="eaddress" required/>
+                                  </div>
+                                  <div class="item">
+                                    <label for="phone">Phone<span>*</span></label>
+                                    <input id="phone" type="tel"   name="phone" required/>
+                                  </div>
+                                </div>
+                                
+                            
+                                <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <h6 class="mb-2 pb-1"> MemeberShip: </h6>
+                                    <select class="select form-control" name="membership_id">
+                                    <option value="1" disabled>Choose option</option>
+                                    {% for member in memberships %}
+                                    <option value="{{member.id}}">{{member.label}}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <h6 class="mb-2 pb-1">Programs: </h6>
+                                    <select class="select form-control" name="program_id">
+                                    <option value="1" disabled>Choose option</option>
+                                    {% for prog in programs %}
+                                    <option value="{{prog.id}}">{{prog.label}}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="mt-4 pt-2">
+                                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                                </div>
+                        </form> -->

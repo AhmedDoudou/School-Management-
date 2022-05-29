@@ -11,20 +11,31 @@
       <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
       <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
       <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/plugins/datatables/datatables.min.css' %}">
+
    </head>
    <body>
     <div class="main-wrapper">
+      {% load bootstrap5 %}
+
+      {# Load CSS and JavaScript #}
+      <!-- {% bootstrap_css %} -->
+      {% bootstrap_javascript %}
        
-       {% include' header.html' %}
-       {% include 'sidebar.html' %}
+        {% comment %} {% include 'includes/header.html' %}
+        {% include 'includes/sidebar.html' %} {% endcomment %}
 
-    {% block content %}
-   
-   {% endblock content %} 
+        {% block content %}
+        <div id="modal" class="modal fade">
+         <div id="dialog" class="modal-dialog" hx-target="this"></div>
+       </div>
+        {% endblock content %} 
 
-   {% include 'footer.html' %}
+        {% comment %} {% include 'includes/footer.html' %} {% endcomment %}
         </div>
         </div>
+      <script src="{% static 'assets/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+      <script src="{% static 'assets/plugins/datatables/datatables.min.js' %}"></script> 
       <script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
       <script src="{% static 'assets/js/popper.min.js' %}"></script>
       <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
@@ -32,6 +43,15 @@
       <script src="{% static 'assets/plugins/apexchart/apexcharts.min.js' %}"></script>
       <script src="{% static 'assets/plugins/apexchart/chart-data.js' %}"></script>
       <script src="{% static 'assets/js/script.js' %}"></script>
+      <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+      <script src="{% static 'assets/js/modal.js' %}"></script>
+      <script src="{% static 'assets/js/htmx.js' %}" defer></script>
+      <script src="https://unpkg.com/htmx.org@1.7.0" integrity="sha384-EzBXYPt0/T6gxNp0nuPtLkmRpmDBbjg6WmCUZRLXBBwYYmwAUxzlSGej0ARHX0Bo" crossorigin="anonymous" defer></script><!-- semantic UI -->
+      <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+      <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <!-- Chart ZingChart -->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
    </body>
    
 </html>

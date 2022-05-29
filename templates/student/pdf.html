@@ -1,0 +1,126 @@
+{% extends 'base/base.html' %}
+{% block content %}
+   {% load static %}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <title>{{object}}</title>
+<style>
+            body {
+    background: #67B26F;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4ca2cd, #67B26F);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4ca2cd, #67B26F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #000;
+}
+.student-profile .card {
+    border-radius: 10px;
+}
+img{
+    width: 80px;
+    border-radius: 50%;
+}
+
+</style>
+    </head>
+    <body>
+
+<hr>
+<div class="student-profile py-4">
+    <div class="container">
+        <table >
+            <thead>
+            <tr>
+            <th> <h1>Date : {{object.date_added}}</h1> </th>
+            <th><img src="{% static 'assets/img/makerLab.png' %}" alt="" width="300px"></th>
+            </tr>
+            </thead>
+            </table>
+      <div class="row">
+        <div style="width: 500px;">
+          {% if object.picture %}
+            <img class="mr-3" alt="..." src="{{stud.picture.url}}" alt="User Image">
+          {% elif object.gender == "Boy" %}
+            <img class="mr-3" alt="..." src="{% static 'assets/img/user.jpg' %}" alt="User Image">
+          {% else %}
+            <img class="mr-3" alt="..." src="{% static 'assets/img/marie.jpg' %}" alt="User Image">
+          {% endif %}
+        
+        <h1>{{object.first_name}} {{object.last_name}}</h1>
+        </div>
+        <div class="col-lg-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <p class="mb-0"><strong class="pr-1">Student ID:</strong>ST{{object.id}}</p>
+              <p class="mb-0"><strong class="pr-1">Grade:</strong>{{object.grade}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0" ><b> General Information</b></h3>
+            </div>
+            <div class="card-body pt-0">
+              <table class="table table-bordered">
+                <tr>
+                  <th width="30%" >Full Name</th>
+                  <td width="2%">:</td>
+                  <td style="color:rgb(6, 104, 251) ; "><h3>{{object.first_name}} {{object.last_name}}</h3></td>
+                </tr>
+                <tr>
+                  <th width="30%" >Birthday	</th>
+                  <td width="2%">:</td>
+                  <td style="color:rgb(6, 104, 251) ; "><h3>{{object.birthday}}</h3></td>
+                </tr>
+                <tr>
+                  <th width="30%" >Gender</th>
+                  <td width="2%">:</td>
+                  <td style="color:rgb(6, 104, 251) ; "><h3>{{object.gender}}</h3></td>
+                </tr>
+                <tr>
+                  <th width="30%" >Phone</th>
+                  <td width="2%">:</td>
+                  <td style="color:rgb(6, 104, 251) ; "><h3>{{object.phone}}</h3></td>
+                </tr>
+                <tr>
+                  <th width="30%" >Email</th>
+                  <td width="2%">:</td>
+                  <td style="color:rgb(6, 104, 251) ; "><h3>{{object.email}}</h3> </td>
+                </tr>
+                <tr>
+                    <th width="30%" >Address</th>
+                    <td width="2%">:</td>
+                    <td style="color:rgb(6, 104, 251) ; "><h3>{{object.address}}</h3> </td>
+                  </tr>
+              </table>
+            </div>
+          </div>
+            <div style="height: 26px"></div>
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0" ><b class="far fa-clone pr-1">Other Information</b></h3>
+            </div>
+            <div style="color:rgb(6, 104, 251) ; ">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+     <div style="width: 100%; margin-top: 500px; margin-left: 500px;">
+              <p>Signator : .................................................</p>
+          </div>
+  </div>
+  
+    </body>
+    </html>
+    {% endblock content %}

@@ -1,0 +1,84 @@
+{% extends 'base/base.html' %}
+{% block content %}
+   {% load static %}
+ {% load bootstrap5 %}
+   <!-- {% bootstrap_css %}
+      {% bootstrap_javascript %} -->
+    {% include 'includes/header.html' %}
+    {% include 'includes/sidebar.html' %}
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+           <div class="page-header">
+              <div class="row align-items-center">
+                 <div class="col">
+                    <h3 class="page-title">Students</h3>
+                    <ul class="breadcrumb">
+                       <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                       <li class="breadcrumb-item active">Students</li>
+                    </ul>
+                 </div>
+                 <div class="col-auto text-right float-right ml-auto">
+                    <a href="  {% url 'student:list_pdf'%} " class="btn btn-outline-primary mr-2"><i class="fas fa-pdf"></i> PDF File</a>
+                    <a href="{% url 'student:create'%}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                 </div>
+              </div>
+              
+           </div>
+           <div class="row">
+              <div class="col-sm-12">
+                 <div class="card card-table">
+                    <div class="card-body">
+                       <div class="table-responsive">
+                          <table class="datatable table table-stripped">
+                             <thead>
+                                <tr>
+                                   <th>ID</th>
+                                   <th>Name</th>
+                                   <th>Grade</th>
+                                   <th>Birthday</th>
+                                   <th>Email</th>
+                                   <th>Mobile Number</th>
+                                   <th>Address</th>
+                                   <th class="text-right">Action</th>
+                                </tr>
+                             </thead>
+                             <tbody>
+                                {% for stud in object_list %}
+                                <tr>
+                                   <td>ST{{stud.id}}</td>
+                                   <td>
+                                      <h2 class="table-avatar">
+                                         {% if stud.picture %}
+                                         <a href="{% url 'student:detail' stud.id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{stud.picture.url}}" alt="User Image"></a>
+                                         {% elif stud.gender == "Boy" %}
+                                         <a href="{% url 'student:detail' stud.id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/user.jpg' %}" alt="User Image"></a>
+                                         {% else %}
+                                         <a href="{% url 'student:detail' stud.id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/marie.jpg' %}" alt="User Image"></a>
+                                         {% endif %}
+                                         <a href="{% url 'student:detail' stud.id %}">{{stud.first_name}} {{stud.last_name}}</a>
+                                      </h2>
+                                   </td>
+                                   <td>{{stud.grade}}</td>
+                                   <td>{{stud.birthday}}</td>
+                                   <td>{{stud.email}}</td>
+                                   <td>{{stud.phone}}</td>
+                                   <td>{{stud.address}}</td>
+                                   <td class="text-right">
+                                      <div class="actions">
+                                         <a href="{% url 'student:update' stud.id %}" class="btn btn-sm bg-success-light mr-2">
+                                         <i class="fas fa-pen"></i>
+                                         </a>
+                                         <a href="{% url 'student:delete' stud.id %}" class="btn btn-sm bg-danger-light">
+                                         <i class="fas fa-trash"></i>
+                                         </a>
+                                      </div>
+                                   </td>
+                                </tr>
+                                 {% endfor %} 
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+
+{% include 'includes/footer.html' %}   
+{% endblock%}                

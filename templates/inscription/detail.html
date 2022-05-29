@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+{% block content %}
+   {% load static %}
+    {% include 'includes/header.html' %}
+    {% include 'includes/sidebar.html' %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+    <div class="page-header">
+    <div class="row">
+    <div class="col-sm-12">
+    <h3 class="page-title">Inscription Details</h3>
+    <ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'inscription:list' %}">Inscription</a></li>
+    <li class="breadcrumb-item active">Inscription Details</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="card">
+    <div class="card-body">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="about-info">
+    <h4>About <b>{{object.student}} </b> Inscription </h4>
+    <div class="media mt-3">
+    <div class="media-body">
+    <ul>
+        <li>
+        <span class="title-span">Student : </span>
+        <span class="info-span">{{ object.student}}</span>
+        </li>
+        <li>
+        <span class="title-span">Parent : </span>
+        <span class="info-span">{{object.parent}}</span>
+        </li>
+        <li>
+        <span class="title-span">Program : </span>
+        <span class="info-span">{{object.program}}</span>
+        </li>
+        <li>
+        <span class="title-span">Subscription: </span>
+        <span class="info-span">{{object.membership}}</span>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+    <div class="row mt-3">
+    
+    </div>
+    {% include 'includes/footer.html' %}   
+    {% endblock%}                

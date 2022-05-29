@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+{% block content %}
+   {% load static %}
+   {% load bootstrap5 %}
+    {% include 'includes/header.html' %}
+    {% include 'includes/sidebar.html' %}
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+           <div class="page-header">
+              <div class="row">
+                 <div class="col-sm-12">
+                    <h3 class="page-title">Add Program</h3>
+                 </div>
+              </div>
+           </div>
+            <div class="row ">
+                <div class="col-md-10 d-flex ">
+                   <div class="card flex-fill col-md-8">
+                      <div class="card-header">
+                         <h5 class="card-title text-center">Add Program</h5>
+                      </div>
+                      <div class="card-body">
+                         <div class="table-responsive">
+                            <form class="mt-8 space-y-6" action="#" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {% bootstrap_form form layout='horizontal' %}
+                                    {% buttons %}
+                                    <button type="submit" class="btn btn-primary">Add Program</button>
+                                    {% endbuttons %}
+                            </form>
+                         </div>
+                      </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+   </div>
+  
+ </div>
+
+     
+  {% include 'includes/footer.html' %}   
+{% endblock%}
