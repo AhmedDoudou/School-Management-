@@ -27,23 +27,30 @@
                   <li><a href="{% url 'inscription:create'%}">Inscription Add</a></li>
                </ul>
             </li>
-             <li class="submenu">
-                <a href="#"><i class="fas fa-book-reader"></i> <span> Programs</span> <span class="menu-arrow"></span></a>
-                <ul>
-                   <li><a href="{% url 'program:list' %}">Program List</a></li>
-                   <li><a href="{% url 'program:create' %}">Program Add</a></li>
-                </ul>
-             </li>
-             <li class="menu-title">
-                <span>Management</span>
-             </li>
-             <li class="submenu">
-                <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> MemberShip</span> <span class="menu-arrow"></span></a>
-                <ul>
-                   
-                   <li><a href="{% url 'dashboard' %}">Salary</a></li>
-                </ul>
-             </li>
+            <li class="submenu">
+               <a href="#"><i class="fas fa-book-reader"></i> <span> Programs</span> <span class="menu-arrow"></span></a>
+               <ul>
+                  <li><a href="{% url 'program:list' %}">Program List</a></li>
+                  <li><a href="{% url 'program:create' %}">Program Add</a></li>
+               </ul>
+            </li>
+            <li class="submenu">
+               <a href="#"><i class="fas fa-book-reader"></i> <span> Payment</span> <span class="menu-arrow"></span></a>
+               <ul>
+                  <li><a href="{% url 'payment:list' %}">Payment List</a></li>
+                  <li><a href="{% url 'payment:pay' %}">Payment Add</a></li>
+               </ul>
+            </li>
+            <li class="menu-title">
+               <span>Management</span>
+            </li>
+            <li class="submenu">
+               <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> MemberShip</span> <span class="menu-arrow"></span></a>
+               <ul>
+                  
+                  <li><a href="{% url 'dashboard' %}">Salary</a></li>
+               </ul>
+            </li>
              
              
              <li>

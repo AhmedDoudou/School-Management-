@@ -6,6 +6,8 @@ admin.site.register(Membership)
 admin.site.register(Parent)
 admin.site.register(Program)
 admin.site.register(Payment)
+admin.site.register(Abonnement)
+
 
 
 @admin.register(Student)

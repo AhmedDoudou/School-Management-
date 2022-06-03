@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_forest',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -155,3 +156,12 @@ LOGOUT_REDIRECT_URL = "/"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+FOREST = {
+   'FOREST_URL': 'https://api.forestadmin.com',
+   'APPLICATION_URL': 'http://localhost:8000',
+   'FOREST_ENV_SECRET': 'ae1e5fe7e973e73011bcab0ac170714925a9915a837029dab053f14e8b010090',
+   'FOREST_AUTH_SECRET': 'e13801a2df1955db0222968ab9918c2e0aa651d055d41589'
+}
+APPEND_SLASH=False

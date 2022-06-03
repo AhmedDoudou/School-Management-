@@ -16,6 +16,8 @@ from django_xhtml2pdf.views import PdfMixin
 from django_xhtml2pdf.utils import pdf_decorator
 from django.core.files.storage import FileSystemStorage
 
+from studentManagement.forms import StudentForm
+
 class StudentCreateView(SuccessMessageMixin, LoginRequiredMixin,CreateView):
     template_name = "student/create.html/"
     model = Student
@@ -64,6 +66,30 @@ class StudentDetailView(LoginRequiredMixin, generic.DetailView):
     context_object_name = "Student Detail "
     model = Student
     success_url ="/"
+
+def Edit(req, id):
+    student = Student.objects.get(id=id)
+    form = StudentForm(instance=student)
+    if req.method =="POST":
+        form = StudentForm(req.POST,instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect("student:list")
+    context ={
+        "form":form
+    }
+    return render(req,"student/edit.html",context)
+
+
+def Detail(req,id):
+    student = Student.objects.get(id=id)
+    payment = Payment.objects.get(student=student)
+    context ={
+        "student":student,
+        "payment":payment
+
+    }
+    return render(req,"student/detail.html",context)
 
 
 class StudentDeleteView(LoginRequiredMixin, DeleteView):

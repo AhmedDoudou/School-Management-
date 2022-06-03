@@ -1,0 +1,81 @@
+{% extends 'base/base.html' %}
+{% block content %}
+   {% load static %}
+   {% load bootstrap5 %}
+    {% include 'includes/header.html' %}
+    {% include 'includes/sidebar.html' %}
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+           <div class="page-header">
+              <div class="row">
+                 <div class="col-sm-12">
+                    <h3 class="page-title"> Payment</h3>
+                 </div>
+              </div>
+           </div>
+            <div class="row ">
+                <div class="col-md-10 d-flex " id="addStudent">
+                   <div class="card flex-fill col-md-8 ">
+                      <div class="card-header">
+                         <h5 class="card-title text-center ">Total To Payment</h5>
+                      </div>
+                      <div class="card-body ">
+                        <div class="input-group mb-3">
+                           <input type="text" class="form-control" value="Total :" readonly>
+                           <b><input type="text" class="form-control" name="total" id="total" value="{{price}}" readonly></b>
+                           <span class="input-group-text">DH</span>
+                        </div>
+                        <div class="input-group mb-3">
+                           <input type="text" class="form-control" value="Payed :" readonly>
+                           <b><input type="number" class="form-control " name="gived" id="gived"  ></b>
+                           <span class="input-group-text">DH</span>
+                        </div>
+                        <div class="form-group row">
+                           <div class="col-md-10 text-right">
+                              <input class=" btn btn-primary" onclick="calcul();" type="submit" value="Next">
+                           </div>
+                        </div>
+                        <div class="input-group mb-3">
+                           <input type="text" class="form-control" value="Rest :" readonly>
+                           <b><input type="number" class="form-control" name="rest" id="rest" readonly></b>
+                           <span class="input-group-text">DH</span>
+                        </div>
+
+                        <!-- <form method="post" action="" enctype="multipart/form-data">
+                           {% csrf_token%}
+                           <div class="input-group mb-3">
+                              <span class="input-group-text" id="inputGroup-sizing-default">Total :</span>
+                              <input type="text" class="form-control" name="total" id="total" value="{{price}} DH" readonly>
+                           </div>
+                           <div class="input-group mb-3">
+                              <span class="input-group-text" id="inputGroup-sizing-default">Gived :</span>
+                              <input type="number" class="form-control" name="gived" id="gived"  >
+                           </div>
+                           <button onclick="calcul();">=</button>
+                           <div class="input-group mb-3">
+                              <span class="input-group-text" id="inputGroup-sizing-default">Rest :</span>
+                              <input type="number" class="form-control" name="rest" id="rest" readonly>
+                           </div>
+                           <div class="form-group row">
+                                 <div class="col-md-10">
+                                    <input class="btn btn-primary" type="submit" value="Next">
+                                 </div>
+                           </div>
+                        </form> -->
+                    </div>
+            </div>
+        </div>
+    </div>
+   </div>
+   <script>
+            
+      function calcul()
+      {
+          var total = parseFloat(document.getElementById('total').value);
+          var gived = parseFloat(document.getElementById('gived').value);
+
+          document.getElementById('rest').value = total-gived;
+      }
+   </script>
+  {% include 'includes/footer.html' %}   
+{% endblock%}

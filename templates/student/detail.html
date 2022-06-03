@@ -13,7 +13,7 @@
     <li class="breadcrumb-item"><a href="students.html">Student</a></li>
     <li class="breadcrumb-item active">Student Details</li>
     <div class="col-auto text-right float-right ml-auto">
-        <a href="{% url 'student:pdf' object.id %}" class="btn btn-outline-primary mr-2"><i class="fas fa-pdf"></i> PDF File</a>
+        <a href="{% url 'student:pdf' student.id %}" class="btn btn-outline-primary mr-2"><i class="fas fa-pdf"></i> PDF File</a>
      </div>
     </ul>
     </div>
@@ -26,48 +26,57 @@
     <div class="about-info">
     <h4>About Me</h4>
     <div class="media mt-3">
-        {% if object.picture %}
-            <img class="mr-3" alt="..." src="{{stud.picture.url}}" alt="User Image">
-        {% elif object.gender == "Boy" %}
+        {% if student.picture %}
+            <img class="mr-3" alt="..." src="{{student.picture.url}}" alt="User Image">
+        {% elif student.gender == "Boy" %}
             <img class="mr-3" alt="..." src="{% static 'assets/img/user.jpg' %}" alt="User Image">
         {% else %}
             <img class="mr-3" alt="..." src="{% static 'assets/img/marie.jpg' %}" alt="User Image">
         {% endif %}
-    <div class="media-body">
+
+    <div class="media-body col-md-8">
     <ul>
         <li>
         <span class="title-span">Full Name : </span>
-        <span class="info-span">{{ object.first_name }} {{object.last_name}}</span>
+        <span class="info-span">{{ student.first_name }} {{student.last_name}}</span>
         </li>
         <li>
         <span class="title-span">Mobile : </span>
-        <span class="info-span">{{object.phone}}</span>
+        <span class="info-span">{{student.phone}}</span>
         </li>
         <li>
         <span class="title-span">Email : </span>
-        <span class="info-span">{{object.email}}</span>
+        <span class="info-span">{{student.email}}</span>
         </li>
         <li>
         <span class="title-span">Gender : </span>
-        <span class="info-span">{{object.gender}}</span>
+        <span class="info-span">{{student.gender}}</span>
         </li>
         <li>
         <span class="title-span">Birthday : </span>
-        <span class="info-span">{{object.birthday}}</span>
+        <span class="info-span">{{student.birthday}}</span>
         </li>
         <li>
         <span class="title-span">Grade : </span>
-        <span class="info-span">{{object.grade}}</span>
+        <span class="info-span">{{student.grade}}</span>
         </li>
         <li>
         <span class="title-span">Address : </span>
-        <span class="info-span">{{object.address}}</span>
+        <span class="info-span">{{student.address}}</span>
         </li>
     </ul>
     </div>
+    <div class="row">
+        <div class="">
+            <h3>Payment</h3>
+            <li>{{payment.abonnement.price}} DH</li>
+        </div>
+        
     </div>
-    <div class="row mt-3">
+    </div>
+    </div>
+    </div>
+    </div>
     
-    </div>
     {% include 'includes/footer.html' %}   
     {% endblock%}                

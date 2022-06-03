@@ -26,6 +26,7 @@ urlpatterns = [
     path('parent/',include('parents.urls', namespace="parent")),
     path('inscription/',include('inscriptions.urls', namespace="inscription")),
     path('payment/',include('payments.urls', namespace="payment")),
+    path('forest', include('django_forest.urls')),
 
 ]
 if settings.DEBUG:

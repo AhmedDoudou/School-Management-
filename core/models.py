@@ -4,8 +4,6 @@ from phone_field import PhoneField
 from birthday import BirthdayField, BirthdayManager
 
 
-
-
 class Student (models.Model):
     GENDER_S = (('Boy', 'Boy'),('Girl', 'Girl'))
     gender      = models.CharField( max_length=10,choices=GENDER_S,default='Boy')
@@ -43,23 +41,30 @@ class Program(models.Model):
 
     def __str__(self):
         return self.label
+
+class Abonnement(models.Model):
+    label = models.CharField(max_length=50)
+    price = models.FloatField()
+    remise = models.FloatField()  
     
-    
+    def __str__(self):
+        return self.label
+
+        
 class Payment(models.Model):
     cash = "CASH"
     cheque = "CHEQUE"
     card = "CREDIT CARD"
     payment_choices = [(cash, "CASH"), (cheque, "CHEQUE"), (card, "Bank Credit Card")]
-    student      = models.ForeignKey("Student", on_delete=models.CASCADE)
-    membership   = models.ForeignKey("Membership", on_delete=models.CASCADE)
-    payment_method = models.CharField(max_length=50, choices=payment_choices, default=cash, )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)   
-    created_by = models.CharField(max_length=50)      
+    student         = models.ForeignKey("Student", on_delete=models.CASCADE)
+    abonnement      = models.ForeignKey("Abonnement",on_delete=models.DO_NOTHING, null=True)
+    payment_method  = models.CharField(max_length=50, choices=payment_choices, default=cash, )
+    created_at      = models.DateTimeField(auto_now_add=True)
+    updated_at      = models.DateTimeField(auto_now=True)   
+    created_by      = models.CharField(max_length=50)      
     
     def __str__(self):
         return self.payment_method+' | '+str(self.created_at)+' | '+self.created_by
-
 
 class Inscription(models.Model):
     student      = models.ForeignKey("Student", on_delete=models.CASCADE)
