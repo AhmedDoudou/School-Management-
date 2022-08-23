@@ -21,7 +21,7 @@
                       </div>
                       <div class="card-body ">
                          <div class="table-responsive">
-                            <form method="post" action="" enctype="multipart/form-data">
+                            <form method="POST" action="" enctype="multipart/form-data">
                                 {% csrf_token%}
                                 <div class="form-group row">
                                    <label class="col-form-label col-md-2">Student</label>
@@ -32,7 +32,6 @@
                                           {% endfor %}
                                       </select>
                                    </div>
-                 
                                 </div>
                                 <div class="form-group row">
                                    <label class="col-form-label col-md-2">Abonnement</label>
@@ -43,39 +42,51 @@
                                           {% endfor %}
                                     </select>
                                    </div>
-                 
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Payment method:</label>
                                     <div class="col-md-10">
-                                        <input type="radio" name="pay_method" value="CASH" checked> CASH<br>
-                                        <input type="radio" name="pay_method" value="SHEQUE"> SHEQUE<br>
-                                     
+                                       <input type="radio" name="pay_method" value="CASH" id="cash" onchange="checkMethod(event)" >CASH
+                                       <input type="radio" name="pay_method" value="CHEQUE" id="cheque" onchange="checkMethod(event)" checked>CHEQUE
                                     </div>
-                  
                                 </div>
+                              <div class="form-group row">
+                                 <div class="col-md-10">
+                                    <input type="file" name="cheque_file" id="cheque_file">
+                                 </div>
+                              </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Pay By:</label>
                                     <div class="col-md-10">
                                         <input class="form-control" type="text" name="pay_by">
                                     </div>
-                  
                                 </div>
-                                
                                 <div class="form-group row">
                                    <div class="col-md-10">
                                       <input class="btn btn-primary" type="submit" value="Sauvegarder">
                                    </div>
                                 </div>
                              </form>
-                         </div>
-                         <h4><li>{{abonnement.price}}</li></h4>
+                         </div> 
                       </div>
                     </div>
             </div>
         </div>
     </div>
    </div>
-  
+   <script >
+      let cheque_file = document.getElementById('cheque_file')
+      let pay_method;
+      function checkMethod(e) {
+         pay_method = e.target.value
+        console.log(pay_method)
+        if (pay_method === "CHEQUE"){
+            cheque_file.type = "file"
+        }
+        else{
+         cheque_file.type = "hidden"
+        }
+      }
+   </script>
   {% include 'includes/footer.html' %}   
 {% endblock%}

@@ -25,7 +25,7 @@ class Student (models.Model):
     picture     = models.ImageField(null=True, blank=True,upload_to='profiles/')
     date_added  = models.DateTimeField(auto_now_add=True)
     is_active   = models.BooleanField(default=False)
-
+    parent      = models.CharField(max_length=50, blank=True)
     objects = BirthdayManager()
     def __str__(self):
         return self.first_name
@@ -61,14 +61,16 @@ class Payment(models.Model):
     payment_method  = models.CharField(max_length=50, choices=payment_choices, default=cash, )
     created_at      = models.DateTimeField(auto_now_add=True)
     updated_at      = models.DateTimeField(auto_now=True)   
-    created_by      = models.CharField(max_length=50)      
+    created_by      = models.CharField(max_length=50)   
+    status          = models.BooleanField(default=True)   
+    picture         = models.ImageField(null=True, blank=True, upload_to='payment/')
     
     def __str__(self):
         return self.payment_method+' | '+str(self.created_at)+' | '+self.created_by
 
 class Inscription(models.Model):
     student      = models.ForeignKey("Student", on_delete=models.CASCADE)
-    parent       = models.ForeignKey("Parent", on_delete=models.CASCADE)
+    # parent       = models.ForeignKey("Parent", on_delete=models.CASCADE)
     program      = models.ForeignKey("Program",on_delete=models.CASCADE)
     membership   = models.ForeignKey("Membership", on_delete=models.CASCADE)
     date_add     = models.DateField(auto_now_add=True)

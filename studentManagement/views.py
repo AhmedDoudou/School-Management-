@@ -83,10 +83,10 @@ def Edit(req, id):
 
 def Detail(req,id):
     student = Student.objects.get(id=id)
-    payment = Payment.objects.get(student=student)
+    payments = Payment.objects.filter(student=student)
     context ={
         "student":student,
-        "payment":payment
+        "payments":payments
 
     }
     return render(req,"student/detail.html",context)
@@ -119,11 +119,22 @@ def student_render_pdf_view(request,*args,**kwargs):
     return response
 
 
-class StudentPdfView(PdfMixin, DetailView):
+class StudentPdfView(PdfMixin, DetailView): #/** FOR EVERY STUDENT  **/
     model = Student
     template_name = "student/pdf.html"
+    def get_context_data(self, **kwargs):
+        
+        context = super(StudentPdfView, self).get_context_data(**kwargs)
+        student = Student.objects.get(pk=self.kwargs.get('pk'))
+        payments = Payment.objects.filter(student=student)
+        context ={
+            "student":student,
+            "payments":payments
 
-class StudentsPdfView(PdfMixin, ListView):
+        }
+        return context
+
+class StudentsPdfView(PdfMixin, ListView):  #/** FOR ALL STUDENTS  **/
     model = Student
     template_name = "student/studentsPDF.html"
     model = Student

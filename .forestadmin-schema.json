@@ -1375,6 +1375,32 @@
           "inverse_of": null,
           "relationship": null,
           "widget": null
+        },
+        {
+          "field": "parent",
+          "type": "String",
+          "is_filterable": true,
+          "is_sortable": true,
+          "is_read_only": false,
+          "is_required": false,
+          "is_virtual": false,
+          "default_value": null,
+          "integration": null,
+          "reference": null,
+          "inverse_of": null,
+          "relationship": null,
+          "widget": null,
+          "validations": [
+            {
+              "type": "is shorter than",
+              "message": "Ensure this value has at most 50 characters",
+              "value": 50
+            },
+            {
+              "type": "is present",
+              "message": "Ensure this value is not null or not empty"
+            }
+          ]
         }
       ]
     },
@@ -1768,6 +1794,36 @@
               "message": "Ensure this value is not null or not empty"
             }
           ]
+        },
+        {
+          "field": "status",
+          "type": "Boolean",
+          "is_filterable": true,
+          "is_sortable": true,
+          "is_read_only": false,
+          "is_required": false,
+          "is_virtual": false,
+          "default_value": true,
+          "integration": null,
+          "reference": null,
+          "inverse_of": null,
+          "relationship": null,
+          "widget": null
+        },
+        {
+          "field": "picture",
+          "type": "String",
+          "is_filterable": true,
+          "is_sortable": true,
+          "is_read_only": false,
+          "is_required": false,
+          "is_virtual": false,
+          "default_value": null,
+          "integration": null,
+          "reference": null,
+          "inverse_of": null,
+          "relationship": null,
+          "widget": null
         }
       ]
     },
@@ -1809,21 +1865,6 @@
           "default_value": null,
           "integration": null,
           "reference": "core_student.id",
-          "inverse_of": "inscription_set",
-          "relationship": "BelongsTo",
-          "widget": null
-        },
-        {
-          "field": "parent",
-          "type": "Number",
-          "is_filterable": true,
-          "is_sortable": true,
-          "is_read_only": false,
-          "is_required": false,
-          "is_virtual": false,
-          "default_value": null,
-          "integration": null,
-          "reference": "core_parent.id",
           "inverse_of": "inscription_set",
           "relationship": "BelongsTo",
           "widget": null
@@ -1893,23 +1934,6 @@
       "actions": [],
       "segments": [],
       "fields": [
-        {
-          "field": "inscription_set",
-          "type": [
-            "Number"
-          ],
-          "is_filterable": false,
-          "is_sortable": true,
-          "is_read_only": false,
-          "is_required": false,
-          "is_virtual": false,
-          "default_value": null,
-          "integration": null,
-          "reference": "core_inscription.id",
-          "inverse_of": "parent",
-          "relationship": "HasMany",
-          "widget": null
-        },
         {
           "field": "id",
           "type": "Number",

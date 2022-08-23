@@ -10,7 +10,7 @@
     <div class="col-sm-12">
     <h3 class="page-title">Student Details</h3>
     <ul class="breadcrumb">
-    <li class="breadcrumb-item"><a href="students.html">Student</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'student:list' %}">Student</a></li>
     <li class="breadcrumb-item active">Student Details</li>
     <div class="col-auto text-right float-right ml-auto">
         <a href="{% url 'student:pdf' student.id %}" class="btn btn-outline-primary mr-2"><i class="fas fa-pdf"></i> PDF File</a>
@@ -18,6 +18,7 @@
     </ul>
     </div>
     </div>
+
     </div>
     <div class="card">
     <div class="card-body">
@@ -66,16 +67,79 @@
         </li>
     </ul>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="">
             <h3>Payment</h3>
-            <li>{{payment.abonnement.price}} DH</li>
+            {% for payment in payments %}
+            <li><b>{{payment.abonnement.price}} DH</b> | {{payment.created_at}}</li>
+            {% endfor %}
         </div>
-        
+    </div>
+     -->
     </div>
     </div>
     </div>
     </div>
+    </div>
+    <div class="col-auto text-right float-right ml-auto mb-3">
+        <a href="{% url 'payment:create' %}" class="btn btn-outline-primary mr-2"><i class="fas fa-pdf"></i> New +</a>
+     </div>
+    <div class="row">
+        <div class="col-sm-12">
+           <div class="card card-table">
+              <div class="card-body">
+                 <div class="table-responsive">
+                    <table class="datatable table table-stripped">
+                       <thead>
+                          <tr>
+                             <th>MemberShip</th>
+                             <th>Payment Method</th>
+                             <th>Payed By</th>
+                             <th>Receipt</th>
+                             <th>Price</th>
+                             <th>Status</th>
+
+
+                             <th class="text-right">Action</th>
+                          </tr>
+                       </thead>
+                       <tbody>
+                          {% for payment in payments %}
+                          <tr>
+                             <td>{{payment.abonnement}}</td>
+                             <td>{{payment.payment_method}}</td>
+                             <td>{{payment.created_by}}</td>
+                             <td>
+                                {% if payment.picture %}
+                                <img class="mr-3" width="100px" height="50px" alt="..." src="{{payment.picture.url}}" alt="recu">
+                                {% else %}
+                                <img class="mr-3" width="100px" height="50px" alt="..." src="{{payment.picture}}" alt="recu">
+                                {% endif %}
+                            </td>
+                             <td><h3>{{payment.abonnement.price}} DH</h3></td>
+                             {% if payment.status %}
+                             <td width="100px"><li class="list-group-item list-group-item-success rounded-pill"  >Complate</li></td>
+                             {% else %}
+                             <td width="100px"><li class="list-group-item list-group-item-danger rounded-pill"  >In Progress</li></td>
+                             {% endif %}
+
+
+                             <td class="text-right">
+                                <div class="actions">
+                                   <a href="{% url 'payment:update' payment.id %}" class="btn btn-sm bg-success-light mr-2">
+                                   <i class="fas fa-pen"></i>
+                                   </a>
+                                   <a href="" class="btn btn-sm bg-danger-light">
+                                   <i class="fas fa-trash"></i>
+                                   </a>
+                                </div>
+                             </td>
+                          </tr>
+                           {% endfor %} 
+                      </tbody>
+                  </table>
+                  </div>
+              </div>  
     </div>
     
     {% include 'includes/footer.html' %}   

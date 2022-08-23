@@ -51,25 +51,28 @@ def NewInsc(request):
     #             parent_form.save()
     if request.method == "POST":
             student_id     = request.POST.get("student_id")
-            parent_id      = request.POST.get('parent_id')
+            # parent_id      = request.POST.get('parent_id')
             program_id     = request.POST.get('program_id')
             membership_id  = request.POST.get('membership_id')
             student        = Student.objects.get(id=student_id)
-            parent         = Parent.objects.get(id=parent_id)
+            # parent         = Parent.objects.get(id=parent_id)
             program        = Program.objects.get(id=program_id)
             membership     = Membership.objects.get(id=membership_id)
-            inscription    = Inscription(student=student,parent=parent,program=program,membership=membership)
+            if student :
+                inscription    = Inscription(student=student,program=program,membership=membership)
+            else :
+                inscription    = Inscription(student=student_id,program=program,membership=membership)
             inscription.save()
             
     context = {
         'student_form': student_form,
-        'parent_form': parent_form,
+        # 'parent_form': parent_form,
         'students'   : students,
-        'parents'   : parents,
+        # 'parents'   : parents,
         'programs'   : programs,
         'memberships' : memberships,
         'last_student': last_student,
-        'last_parent': last_parent,
+        # 'last_parent': last_parent,
 
     }
     return render(request, template_name,context) 

@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block content %}
+   {% load static %}
+   {% load bootstrap5 %}
+    {% include 'includes/header.html' %}
+    {% include 'includes/sidebar.html' %}
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+           <div class="page-header">
+              <div class="row">
+                 <div class="col-sm-12">
+                    <h3 class="page-title"> Payment</h3>
+                 </div>
+              </div>
+           </div>
+            <div class="row ">
+                <div class="col-md-10 d-flex " id="addStudent">
+                   <h2>{{rest}}</h2>
+                   </div>
+            </div>
+        </div>
+    </div>
+   </div>
+  
+  {% include 'includes/footer.html' %}   
+{% endblock%}

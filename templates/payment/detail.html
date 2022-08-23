@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{% block content %}
+   {% load static %}
+    {% include 'includes/header.html' %}
+    {% include 'includes/sidebar.html' %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+    <div class="page-header">
+    <div class="row">
+    <div class="col-sm-12">
+    <h3 class="page-title">Payment Details</h3>
+    <ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'payment:list' %}">Payment</a></li>
+    <li class="breadcrumb-item active">Payment Details</li>
+    <div class="col-auto text-right float-right ml-auto">
+        <a href="{% url 'payment:pdf' payment.id %}" class="btn btn-outline-primary mr-2"><i class="fas fa-pdf"></i> PDF File</a>
+     </div>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="card">
+    <div class="card-body">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="about-info">
+        <h3>Payment</h3>
+        <div class="media mt-3">
+            {% if payment.picture %}
+            <img class="mr-3" src="{{payment.picture.url}}">
+            {% else %}
+            <img class="mr-3" src="{{payment.picture}}">
+            {% endif %}
+        <div class="media-body col-md-8">
+            <ul>
+                <li>
+                <span class="title-span">Payed For: </span>
+                <span class="info-span">{{ payment.student.first_name }} {{payment.student.last_name}}</span>
+                </li>
+                <li>
+                <span class="title-span">Price: </span>
+                <span class="info-span">{{ payment.abonnement.price }} HD</span>
+                </li>
+                <li>
+                <span class="title-span">Mobile : </span>
+                <span class="info-span">{{payment.student.phone}}</span>
+                </li>
+                <li>
+                <span class="title-span">Email : </span>
+                <span class="info-span">{{payment.student.email}}</span>
+                </li>
+                <li>
+                <span class="title-span">Abonnement : </span>
+                <span class="info-span">{{payment.abonnement}}</span>
+                </li>
+                <li>
+                <span class="title-span">Payment Method : </span>
+                <span class="info-span">{{payment.payment_method}}</span>
+                </li>
+                <li>
+                <span class="title-span">Payed By : </span>
+                <span class="info-span">{{payment.created_by}}</span>
+                </li>
+                <li>
+                <span class="title-span">Payed At : </span>
+                <span class="info-span">{{payment.created_at}}</span>
+                </li>
+            </ul>
+        </div>
+            
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        {% include 'includes/footer.html' %}   
+        {% endblock%} 

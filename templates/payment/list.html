@@ -36,6 +36,10 @@
                                    <th>MemberShip</th>
                                    <th>Payment Method</th>
                                    <th>Create By</th>
+                                   <th>Price</th>
+                                   <th>Status</th>
+
+
                                    <th class="text-right">Action</th>
                                 </tr>
                              </thead>
@@ -43,10 +47,17 @@
                                 {% for payment in payments %}
                                 <tr>
                                    <td>ST{{payment.id}}</td>
-                                   <td>{{payment.student}}</td>
+                                   <td><a href="{% url 'payment:detail' payment.id %}" class=" mr-2">{{payment.student}}</a></td>
                                    <td>{{payment.membership}}</td>
                                    <td>{{payment.payment_method}}</td>
                                    <td>{{payment.created_by}}</td>
+                                   <td>{{payment.abonnement.price}} DH</td>
+                                   {% if payment.status %}
+                                   <td width="100px"><li class="list-group-item list-group-item-success rounded-pill"  >Complate</li></td>
+                                   {% else %}
+                                   <td width="100px"><li class="list-group-item list-group-item-danger rounded-pill"  >In Progress</li></td>
+                                   {% endif %}
+
 
                                    <td class="text-right">
                                       <div class="actions">
